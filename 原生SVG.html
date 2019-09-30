@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>原生SVG练习</title>
+    <meta charset="utf-8" />
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width:100%;height:100%">
+        <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <!--滤镜的使用-->
+            <!--    <filter> 标签的 id 属性可为滤镜定义一个唯一的名称（同一滤镜可被文档中的多个元素使用）
+                    filter:url 属性用来把元素链接到滤镜。当链接滤镜 id 时，必须使用 # 字符
+                    滤镜效果是通过 <feGaussianBlur> 标签进行定义的。fe 后缀可用于所有的滤镜
+                    <feGaussianBlur> 标签的 stdDeviation 属性可定义模糊的程度
+                    in="SourceGraphic" 这个部分定义了由整个图像创建效果 -->
+            <defs>
+                <filter id="Gaussian_Blur">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+                </filter>
+            </defs>
+            <!---矩形-->
+            <rect width="250" height="250" x="20" y="20"
+                style="fill: blue;stroke: pink;stroke-width:5;stroke-opacity: 0.9;fill-opacity: 0.1">
+            </rect>
+            <!--圆形-->
+            <!-- <circle cx="340" cy="70" r="50" stroke="black" stroke-width="2" fill="red">
+                </circle> -->
+            <circle cx="340" cy="70" r="50" style=" stroke:black;stroke-width:2;fill:red">
+            </circle>
+            <!--椭圆-->
+            <ellipse cx="240" cy="370" rx="220" ry="30" style="fill:purple;fill-opacity:0.2;filter:url(#Gaussian_Blur)">
+            </ellipse>
+            <ellipse cx="220" cy="340" rx="190" ry="20" style="fill:lime;fill-opacity:0.2">
+            </ellipse>
+            <ellipse cx="210" cy="315" rx="170" ry="15" style="fill:yellow;fill-opacity:0.2">
+            </ellipse>
+            <!--线条-->
+            <line x1="545" y1="165" x2="650" y2="270" style="stroke:red">
+            </line>
+            <line x1="650" y1="270" x2="775" y2="20" style="stroke:red">
+            </line>
+            <!--<polygon> 标签用来创建含有不少于三个边的图形。-->
+            <polygon points="240,420 40,500 440,600" style="fill: #cccccc;stroke: #000000;stroke-width:2">
+            </polygon>
+            <!--折线-->
+            <polyline points="450,560 500,600 550,420" style="fill:white;stroke:red;stroke-width:2">
+            </polyline>
+            <!--渐变
+                当 y1 和 y2 相等，而 x1 和 x2 不同时，可创建水平渐变
+                当 x1 和 x2 相等，而 y1 和 y2 不同时，可创建垂直渐变
+                当 x1 和 x2 不同，且 y1 和 y2 不同时，可创建角形渐变
+                <linearGradient> 标签的 id 属性可为渐变定义一个唯一的名称
+                   fill:url(#orange_red) 属性把 ellipse 元素链接到此渐变
+                   <linearGradient> 标签的 x1、x2、y1、y2 属性可定义渐变的开始和结束位置
+                   渐变的颜色范围可由两种或多种颜色组成。每种颜色通过一个 <stop> 标签来规定。offset 属性用来定义渐变的开始和结束位置。
+            -->
+            <defs>
+                <linearGradient id="orange_green" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:0.3" />
+                    <stop offset="50%" style="stop-color: yellowgreen;stop-opacity:0.4"></stop>
+                    <stop offset="100%" style="stop-color: rgb(0, 255, 213);stop-opacity:0.5" />
+                    <!-- <stop offset="0%" style="stop-color:rgb(255,255,0);
+                        stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:rgb(255,0,0);
+                        stop-opacity:1" /> -->
+                </linearGradient>
+            </defs>
+            <defs>
+                <radialGradient id="grey_blue" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                    <stop offset="0%" style="stop-color:red;
+                        stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:rgb(0,0,255);
+                        stop-opacity:1" />
+                </radialGradient>
+            </defs>
+            <ellipse cx="630" cy="480" rx="50" ry="30" style="fill:url(#orange_green)">
+            </ellipse>
+            <ellipse cx="800" cy="480" rx="110" ry="80" style="fill:url(#grey_blue)" />
+
+
+            <!--路径path-->
+            <!-- M = moveto
+            L = lineto
+            H = horizontal lineto
+            V = vertical lineto
+            C = curveto
+            S = smooth curveto
+            Q = quadratic Belzier curve
+            T = smooth quadratic Belzier curveto
+            A = elliptical Arc
+            Z = closepath -->
+            <path d="M153 934
+                  C153 734 151 734 151 734
+                  C151 739 153 744 156 744
+                  C164 744 171 739 171 734
+                  C171 722 164 714 156 714
+                  C142 714 131 722 131 734
+                  C131 750 142 764 156 764
+                  C175 764 191 750 191 734
+                  C191 711 175 694 156 694
+                  C131 694 111 711 111 734
+                  C111 761 131 784 156 784
+                  C186 784 211 761 211 734
+                  C211 700 186 674 156 674"
+                  style="fill:white;stroke:red;stroke-width:2" />
+        </svg>
+    </div>
+</body>
+
+</html>

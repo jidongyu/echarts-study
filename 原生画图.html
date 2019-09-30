@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            原生画图
+        </title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="500px" height="500px" style="background-color:rgba(0,0,0,0.8)">
+            该浏览器不支持canvas画图
+        </canvas>
+        <script>
+            //获取画布
+            const cv = document.getElementById("myCanvas");
+            //设置绘画形式
+            let cx = cv.getContext('2d');
+            //开启绘画路径
+            cx.beginPath();
+            const circle = {
+                x:100,
+                y:100,
+                r:50
+            }
+            //沿着原点为（100，100），绘制半径为50的顺时针弧度
+            cx.arc(circle.x,circle.y,circle.r,0,Math.PI*2,false);
+            cx.stroke();
+        </script>
+    </body>
+</html>
